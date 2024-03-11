@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  django:
+    build:
+      context: ./Backend
+    ports:
+      - "11455:8000"
+    depends_on:
+      - vue
+
+  vue:
+    build:
+      context: ./Frontend  # 指定 Vue 项目的路径
+    ports:
+      - "11456:8001"
