@@ -11,6 +11,8 @@ import OntologyDetails from '@/apps/OntologyBase/OntologyDetails/OntologyDetails
 import CaseBase from '@/apps/CaseBase/CaseBase.vue';
 // import CaseSearchResults from '@/apps/CaseBase/SearchResults/SearchResults.vue';
 import CaseDetails from '@/apps/CaseBase/CaseDetails/CaseDetails.vue';
+import CaseView from '@/apps/CaseBase/CaseDetails/CaseView/CaseView.vue';
+import CaseQuiz from '@/apps/CaseBase/CaseDetails/CaseQuiz/CaseQuiz.vue';
 
 // homepage routes
 const routes_HomePage = [{
@@ -27,12 +29,12 @@ const routes_OntologyBase = [{
   name: 'Ontology_OntologyBase',
 },
 {
-  path: '/ontology/search',
+  path: '/ontology/search/',
   component: OntologySearchResults,
   name: 'Ontology_SearchResults',
 },
 {
-  path: '/ontology/details/:id',
+  path: '/ontology/details/:id/',
   component: OntologyDetails,
   name: 'Ontology_Details',
 },
@@ -45,14 +47,24 @@ const routes_CaseBase = [{
   name: 'Case_CaseBase',
 },
 // {
-//   path: '/case/search',
+//   path: '/case/search/',
 //   component: CaseSearchReults,
 //   name: 'Case_SearchResults',
 // },
 {
-  path: '/case/details/:id',
+  path: '/case/details/:id/',
   component: CaseDetails,
   name: 'Case_Details',
+},
+{
+  path: '/case/details/:id/view/',
+  component: CaseView,
+  name: 'Case_Details_View',
+},
+{
+  path: '/case/details/:id/quiz/',
+  component: CaseQuiz,
+  name: 'Case_Details_Quiz',
 },
 ];
 

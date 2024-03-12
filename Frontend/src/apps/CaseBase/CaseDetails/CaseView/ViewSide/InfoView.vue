@@ -1,0 +1,1 @@
+<template>Info view</template>
