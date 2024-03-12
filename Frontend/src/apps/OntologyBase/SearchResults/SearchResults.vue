@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-main>
+        <v-main class="bg-grey-lighten-3">
             <AppBar :backPage="backPage"></AppBar>
             <v-container style="max-width: 1500px;">
                 <v-row>

@@ -3,11 +3,16 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 // import components
 import Home from '@/apps/HomePage/HomePage.vue';
+
 import OntologyBase from '@/apps/OntologyBase/OntologyBase.vue';
-import SearchResults from '@/apps/OntologyBase/SearchResults/SearchResults.vue';
+import OntologySearchResults from '@/apps/OntologyBase/SearchResults/SearchResults.vue';
 import OntologyDetails from '@/apps/OntologyBase/OntologyDetails/OntologyDetails.vue';
 
-// create routes
+import CaseBase from '@/apps/CaseBase/CaseBase.vue';
+// import CaseSearchResults from '@/apps/CaseBase/SearchResults/SearchResults.vue';
+import CaseDetails from '@/apps/CaseBase/CaseDetails/CaseDetails.vue';
+
+// homepage routes
 const routes_HomePage = [{
   path: '/',
   component: Home,
@@ -15,6 +20,7 @@ const routes_HomePage = [{
 },
 ];
 
+// ontology base routes
 const routes_OntologyBase = [{
   path: '/ontology/',
   component: OntologyBase,
@@ -22,7 +28,7 @@ const routes_OntologyBase = [{
 },
 {
   path: '/ontology/search',
-  component: SearchResults,
+  component: OntologySearchResults,
   name: 'Ontology_SearchResults',
 },
 {
@@ -32,10 +38,29 @@ const routes_OntologyBase = [{
 },
 ];
 
+// case base routes
+const routes_CaseBase = [{
+  path: '/case/',
+  component: CaseBase,
+  name: 'Case_CaseBase',
+},
+// {
+//   path: '/case/search',
+//   component: CaseSearchReults,
+//   name: 'Case_SearchResults',
+// },
+{
+  path: '/case/details/:id',
+  component: CaseDetails,
+  name: 'Case_Details',
+},
+];
+
 // concatenate all routes
 export const routes = [
   ...routes_HomePage,
   ...routes_OntologyBase,
+  ...routes_CaseBase,
 ];
 
 const router = createRouter({

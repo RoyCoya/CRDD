@@ -1,6 +1,6 @@
 <template>
   <!-- <v-btn @click="testFunc">test</v-btn> -->
-  <div ref="relation_network" class="border rounded mt-3"></div>
+  <div ref="relation_network" class="border rounded mt-3 bg-white"></div>
 </template>
 
 <script setup>
