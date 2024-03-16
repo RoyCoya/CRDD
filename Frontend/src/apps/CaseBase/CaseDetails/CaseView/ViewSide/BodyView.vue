@@ -1,1 +1,0 @@
-<template>Body view</template>

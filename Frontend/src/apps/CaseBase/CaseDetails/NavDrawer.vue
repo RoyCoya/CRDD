@@ -24,18 +24,25 @@ const links = [
     { key: 'abstract', label: '概览', icon: 'mdi-text-box', nav_to: () => { router.push({ name: 'Case_Details', params: { id: route.params.id } }) } },
     { key: 'view', label: '视图', icon: 'mdi-view-dashboard', nav_to: () => { router.push({ name: 'Case_Details_View', params: { id: route.params.id } }) } },
     { key: 'quiz', label: '习题', icon: 'mdi-puzzle', nav_to: () => { router.push({ name: 'Case_Details_Quiz', params: { id: route.params.id } }) } },
-    { key: 'developing', label: '# 备用', icon: 'mdi-hammer-wrench', nav_to: null },
+    { key: 'developing', label: '编辑', icon: 'mdi-hammer-wrench', nav_to: () => { router.push({ name: 'Case_Details_Edit', params: { id: route.params.id } }) } },
     //['mdi-text-box-edit', '编辑概览'],
     //['mdi-view-dashboard-edit', '编辑视图'],
     //['mdi-text-box-edit-outline', '编辑习题'],
 ];
 const drawer = ref(true);
-
+const props = defineProps({
+    backPage: {
+        type: String,
+        required: true,
+    },
+    backPage_params: Object,
+    backPage_query: Object,
+});
 /* Define your functions */
 // const func_a = () => {};
 const back_to_base = () => {
     router.push({
-        name: 'Case_CaseBase',
+        name: props.backPage,
     });
 };
 </script>

@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { routes } from '@/configs/router';
+import { routes } from '@/configs/router/router';
 
 const links = [
     { title: '主页', name: 'HomePage' },
@@ -30,4 +30,4 @@ const links = [
 ];
 </script>
 
-<style></style>
+<style></style>@/configs/router/router

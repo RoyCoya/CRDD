@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 // 路由
-import router from './configs/router'
+import router from './configs/router/router'
 
 // Vuetify
 import 'vuetify/styles'

@@ -1,1 +1,0 @@
-<template>Relation view</template>

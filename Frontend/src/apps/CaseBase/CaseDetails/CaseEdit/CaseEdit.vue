@@ -2,7 +2,7 @@
     <v-app>
         <NavDrawer :backPage="backPage"></NavDrawer>
         <v-main>
-            概览
+            编辑
         </v-main>
     </v-app>
 </template>
@@ -10,6 +10,7 @@
 <script setup>
 /* Import any necessary modules or components */
 import NavDrawer from '@/apps/CaseBase/CaseDetails/NavDrawer.vue';
+
 
 /* Define your component's data using ref */
 // const myData = ref('Hello, Vue 3!');
