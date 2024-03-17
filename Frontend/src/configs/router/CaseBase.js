@@ -2,11 +2,11 @@
 import CaseBase from '@/apps/CaseBase/CaseBase.vue';
 // import CaseSearchResults from '@/apps/CaseBase/SearchResults/SearchResults.vue';
 import CaseDetails from '@/apps/CaseBase/CaseDetails/CaseDetails.vue';
-import CaseView from '@/apps/CaseBase/CaseDetails/CaseView/CaseView.vue';
-import InfoView from '@/apps/CaseBase/CaseDetails/CaseView/InfoView.vue';
-import RelationView from '@/apps/CaseBase/CaseDetails/CaseView/RelationView.vue';
-import TimelineView from '@/apps/CaseBase/CaseDetails/CaseView/TimelineView.vue';
-import BodyView from '@/apps/CaseBase/CaseDetails/CaseView/BodyView.vue';
+import CaseView from '@/apps/CaseBase/CaseDetails/CaseView//CaseView.vue';
+import InfoView from '@/apps/CaseBase/CaseDetails/CaseView/Views/InfoView/InfoView.vue';
+import RelationView from '@/apps/CaseBase/CaseDetails/CaseView/Views/RelationView/RelationView.vue';
+import TimelineView from '@/apps/CaseBase/CaseDetails/CaseView/Views/TimelineView/TimelineView.vue';
+import BodyView from '@/apps/CaseBase/CaseDetails/CaseView/Views/BodyView/BodyView.vue';
 import CaseQuiz from '@/apps/CaseBase/CaseDetails/CaseQuiz/CaseQuiz.vue';
 import CaseEdit from '@/apps/CaseBase/CaseDetails/CaseEdit/CaseEdit.vue';
 

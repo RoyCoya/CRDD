@@ -29,6 +29,7 @@ import NavDrawer from '@/apps/CaseBase/CaseDetails/NavDrawer.vue';
 import PatientInfo from '@/apps/CaseBase/CaseDetails/CaseView/PatientInfo/PatientInfo.vue';
 import OriginRecords from '@/apps/CaseBase/CaseDetails/CaseView/OrginRecords/OriginRecords.vue';
 import { useRoute } from 'vue-router';
+import treeview from 'vue3-treeview';
 
 /* Define your component's data using ref */
 // const myData = ref('Hello, Vue 3!');
