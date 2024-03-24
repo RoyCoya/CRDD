@@ -63,7 +63,6 @@ const openNode = (node, closeElse = true) => {
     parents.forEach(node => { node.state.opened = true; });
     node.state.opened = true;
 };
-
 const openNodeByDepth = (depth) => {
     const nodes = getNodesByDepth(depth);
     console.log(nodes);
