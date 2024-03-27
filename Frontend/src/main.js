@@ -1,7 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// 路由
+
+// App instance
+const app = createApp(App);
+
+// vue-router
 import router from './configs/router/router'
+
+// Event emitter
+// import mitt from 'mitt';
+// const emitter = mitt();
+// app.config.globalProperties.emitter = emitter;
 
 // Vuetify
 import 'vuetify/styles'
@@ -13,9 +22,6 @@ const vuetify = createVuetify({
   components,
   directives,
 })
-
-// 项目实例
-const app = createApp(App);
 
 app.use(router).use(vuetify);
 
