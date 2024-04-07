@@ -10,12 +10,18 @@
                 </v-row>
                 <v-row>
                     <v-col cols="4">
-                        <OriginRecords :annotations="infos" :records="records" :annotations_type="annotations_type">
+                        <OriginRecords :annotations="infos" :records="records" :annotations_type="annotations_type"
+                            :annotation_default_color="annotation_default_color">
                         </OriginRecords>
                     </v-col>
                     <v-col cols="8">
                         <v-sheet elevation="5" rounded class="py-3 px-5" min-height="70vh">
                             <h2 class="mb-3">重点信息</h2>
+                            <v-row>
+                                <v-combobox v-model="queryString" no-data-text="未找到相关内容" class="pa-3"
+                                    density="comfortable" placeholder="信息、本体、值……" prepend-inner-icon="mdi-magnify"
+                                    theme="light" variant="solo" item-props rounded></v-combobox>
+                            </v-row>
                             <v-sheet class="border rounded-xl pa-3" min-height="100">
                                 <InfoTree :config="config" :nodes_obj="nodes_obj" :nodes_array="nodes_array"></InfoTree>
                             </v-sheet>
@@ -42,7 +48,9 @@ import InfoTree from './InfoTree.vue';
 const route = useRoute();
 const backPage = 'Case_Details_View';
 const backPage_params = { id: route.params.id };
-const annotations_type = 'Info'
+const annotations_type = 'Info';
+const annotation_default_color = '#777777';
+const queryString = ref(null);
 
 const records = ref([
     {

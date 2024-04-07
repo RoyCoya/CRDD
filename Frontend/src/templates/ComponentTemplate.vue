@@ -12,6 +12,9 @@
 
 /* Define your functions */
 // const func_a = () => {};
+
+/* Define things you need to do on mounted */
+
 </script>
 
 <style scoped>
