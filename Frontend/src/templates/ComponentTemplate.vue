@@ -5,13 +5,11 @@
 </template>
 
 <script setup>
-/* Import any necessary modules or components */
+/* Import */
 
-/* Define your component's data using ref */
-// const myData = ref('Hello, Vue 3!');
+/* Data */
 
-/* Define your functions */
-// const func_a = () => {};
+/* Functions */
 
 /* Define things you need to do on mounted */
 
