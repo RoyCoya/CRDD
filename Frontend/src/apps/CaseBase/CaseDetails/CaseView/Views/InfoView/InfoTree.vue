@@ -95,7 +95,7 @@ const openNodeByDepth = (depth) => {
 const focusNode = (node, showBrothers = true) => {
     openNode(node);
     // open children deeper by one level
-    // node.state.opened = (node.state.opened) ? false : true;
+    // node.state.opened = !node.state.opened)
 
     // interaction with origin records
     var annotationsToShow = [];
