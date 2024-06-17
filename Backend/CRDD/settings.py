@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     # 自建应用
     'MainFrame.apps.MainframeConfig',
+    'OntologyBase.apps.OntologybaseConfig',
 ]
 
 MIDDLEWARE = [
