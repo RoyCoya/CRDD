@@ -27,7 +27,7 @@ const route = useRoute();
 const ontology_name = ref('本体' + route.params.id)
 const backPage = ref('Ontology_SearchResults')
 const backPage_query = ref({
-    query: ontology_name.value,
+    onto_name: ontology_name.value,
 })
 
 /* Define your functions */

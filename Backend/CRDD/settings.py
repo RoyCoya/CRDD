@@ -27,9 +27,10 @@ SECRET_KEY = "django-insecure-ps=1a9degj_23a%0^20e#3+62im+jbr&g#9rpi4c24@^f%(j-&
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1','localhost','0.0.0.0', # 本地开发
+    '127.0.0.1','localhost','0.0.0.0', # for local development
 ]
 
+# for internal network
 ALLOWED_HOSTS += ['192.168.{}.{}'.format(i, j) for i in range(256) for j in range(256)]
 
 # Application definition
@@ -41,10 +42,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # 三方应用
+    # third-party apps
     'rest_framework',
     'corsheaders',
-    # 自建应用
+    # self-build apps
     'MainFrame.apps.MainframeConfig',
     'OntologyBase.apps.OntologybaseConfig',
 ]
@@ -83,20 +84,27 @@ TEMPLATES = [
 WSGI_APPLICATION = "CRDD.wsgi.application"
 
 
-# Database
+# Databases
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "crdd",
-        "USER": "RoyCoya",
+        "USER": os.environ.get('MYSQL_USER'),
         "PASSWORD": os.environ.get('MYSQL_PSW'),
         "HOST": "127.0.0.1",
         "PORT": "3306",
     }
 }
 
+# neo4j settings
+NEO4J = {
+    'ip' : 'localhost',
+    'bolt_port' : '7687',
+    'user' : os.environ.get('NEO_USER'),
+    'password' : os.environ.get('NEO_PSW'),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -144,13 +152,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'userfile/')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# 用户账户管理
+# User account handler
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = '/logout/'
 LOGOUT_REDIRECT_URL = '/'
 
-# 跨域请求
+# Cross-origin resource requests
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "http://localhost:5173", # vue3 frontend
 ]

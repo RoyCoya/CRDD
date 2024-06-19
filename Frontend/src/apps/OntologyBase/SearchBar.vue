@@ -16,7 +16,7 @@ import { useRoute, useRouter } from 'vue-router'
 // const myData = ref('Hello, Vue 3!');
 const route = useRoute();
 const router = useRouter();
-const queryString = ref(route.query.query);
+const queryString = ref(route.query.onto_name);
 const items = ref([
   '本体 1', '本体 2'
 ])
@@ -25,7 +25,7 @@ const searchOntology = () => {
   router.push({
     name: 'Ontology_SearchResults',
     query: {
-      query: queryString.value,
+      onto_name: queryString.value,
     },
   });
 };

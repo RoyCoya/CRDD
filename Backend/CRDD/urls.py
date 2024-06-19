@@ -12,6 +12,7 @@ djangoURLs = [
     
 publicAPPs = [
     path('', include('MainFrame.urls')),
+    path('ontology/', include('OntologyBase.urls')),
 ]
 
 privateAPPs = [
