@@ -1,41 +1,46 @@
-from django.http import JsonResponse
-from .utils import check_connection, driver, cjk_regex
+from django.http import JsonResponse, HttpRequest
+from .neo import *
+from .response import *
 from django.core.paginator import Paginator
 
-# TODO: one API do only one thing and make one query, don't decouple it, to decrease database cost
-@check_connection
-def get_concept_id_by_representation(request):
-    name = request.GET.get("name")
-    if not name: return JsonResponse({
-        "message":"Input error: no search parameter has been given"
-    }, status=400)
-    is_cjk = bool(cjk_regex.search(name))
-    query = f"""
-        call db.index.fulltext.queryNodes("{"representation_cjk" if is_cjk else "representation_eng"}", $name) yield node
-        match (node)-[:Represent]->(concept:Concept)
-        WITH concept
-        LIMIT 50
-        return id(concept)
-    """
-    
-    try:
-        result = driver.execute_query(query, parameters_={"name": name})
-        data = [r.data()['id(concept)'] for r in result.records]
-        # TODO: why always unknow?
-        time = str(result.summary.result_available_after) + "ms" if result.summary.result_available_after else "Unkown"
-        driver.close()
-        return JsonResponse({
-            "message":"successed",
-            "summary":"Concept ID list",
-            "time_consumption":time,
-            "data":data,
-        })
-    except Exception as e:
-        driver.close()
-        return JsonResponse({
-            "message":f"Database Error : {str(e)}"
-            }, status=500)
 
-@check_connection
-def get_presentations_by_concept(request):
+def search_concept(request: HttpRequest):
+    """search by concept's defined code or its representations
+    
+    Args:
+    1. When search by code, three parameters are needed: `definition_set`, `coding_set`, `code`.
+    2. When parameters above are not complete or not given, search by given parameter `representation`.
+    3. If the condition is not included above, return InputError
+    4. Else return InternalError
+
+    Return:
+    - `message` str: `successed` or error information
+    - `data` list
+        - `concept` dict
+            - `element_id` str: concept's element id
+        - `representations` list[dict]
+            - `element_id` str: representation's element id
+            - `value` str: representation in text
+    ```
+    """
+    try:
+        if not request.GET: return ERROR_INPUT
+        definition_set, coding_set, code, representation = [request.GET.get(param) for param in ["definition_set", "coding_set", "code", "representation"] ]
+        if definition_set and coding_set and code: return JsonResponse({"message": "successed", "data": get_concept_by_code(definition_set, coding_set, code)})
+        if representation: return JsonResponse({"message": "successed","data": get_concept_by_representation(representation, 100),})
+        return ERROR_INPUT
+    except Exception as e: return JsonResponse({"message": "Internal Error: " + str(e)}, status=500)
+
+
+def retrieve_concept(request: HttpRequest, element_id):
+    """retrieve an concept's basic infos and its related infos
+    
+    Args:
+    - `element_id`: concept's element id
+    
+    Return:
+    - `concept_eid`: concept's element id (given by user)
+    - `representations`: all representations to represent the concept
+    - `coding_set`: coding set that encoded the concept
+    """
     return 0

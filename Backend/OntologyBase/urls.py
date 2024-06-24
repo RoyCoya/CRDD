@@ -5,6 +5,7 @@ from .views import *
 app_name = 'Ontology'
 
 urlpatterns = [
-    path('search/ontology/', get_concept_id_by_representation, name='search_ontology'),
-    path('search/concept/', get_presentations_by_concept, name='search_concept'),
+    path('concept/search/', search_concept, name='search_concept'),
+    path('concept/<str:element_id>/', retrieve_concept, name='retrieve_concept'),
+
 ]
