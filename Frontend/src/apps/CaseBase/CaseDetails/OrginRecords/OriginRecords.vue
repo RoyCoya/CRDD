@@ -25,25 +25,26 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { emitter } from '@/apps/CaseBase/CaseDetails/CaseView/emitter';
-
+import { emitter } from '@/apps/CaseBase/CaseDetails/emitter';
+import template from '../template';
 /* Import any necessary modules or components */
 
 /* Define your component's data using ref */
 // TODO: decoupling functions to js files
-const props = defineProps({
-    records: {
-        type: Object,
-        required: true,
-    },
-    annotations_type: String,
-    annotations: Object,
-    annotation_default_color: String,
-});
-const records = props.records;
-const annotations = props.annotations;
+// const props = defineProps({
+//     records: {
+//         type: Object,
+//         required: true,
+//     },
+//     annotations_type: String,
+//     annotations: Object,
+//     annotation_default_color: String,
+// });
+const annotations_type = 'Info';
+const annotation_default_color = '#777777';
+const records = ref(template.records);
+const annotations = template.information;
 const annotation_depth = ref(0);
-const annotation_default_color = props.annotation_default_color;
 const annotatedRecordHTML = ref('')
 
 //TODO: optimize record with annotations generation functions, try createElementBlock in vue
@@ -90,7 +91,7 @@ const getAnnotationsByDepth = (depth) => {
 
 const changeDepth = (depth) => {
     annotation_depth.value = depth;
-    annotatedRecordHTML.value = getAnnotatedRecordsHTML(records, getAnnotationsByDepth(depth));
+    annotatedRecordHTML.value = getAnnotatedRecordsHTML(records.value, getAnnotationsByDepth(depth));
 }
 
 // listen annotation click
@@ -114,7 +115,7 @@ onMounted(() => {
         annotationsToShow.sort((a, b) => a.start - b.start)
         annotation_depth.value = annotationsToShow[0].depth;
         console.log(annotationsToShow);
-        annotatedRecordHTML.value = getAnnotatedRecordsHTML(records, annotationsToShow, focusedIDs);
+        annotatedRecordHTML.value = getAnnotatedRecordsHTML(records.value, annotationsToShow, focusedIDs);
     });
 
     /* relation view events */

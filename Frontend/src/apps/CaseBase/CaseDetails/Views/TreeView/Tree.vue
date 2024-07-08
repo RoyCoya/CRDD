@@ -7,7 +7,7 @@
 import { ref, onMounted } from 'vue';
 import Tree from 'vue3-treeview';
 import "@/assets/css/treeview.css";
-import { emitter } from '@/apps/CaseBase/CaseDetails/CaseView/emitter';
+import { emitter } from '@/apps/CaseBase/CaseDetails/emitter';
 
 /* Define your component's data using ref */
 // const myData = ref('Hello, Vue 3!');
@@ -123,8 +123,8 @@ openNodeByDepth(0);
 
 onMounted(() => {
     emitter.on('focusAnnotation', node_id => {
-        // const node = getNodeByID(node_id)
-        // focusNode(node);
+        const node = getNodeByID(node_id)
+        focusNode(node);
         console.log(`annotation focused, should focus node ${node_id}`);
     });
 });
