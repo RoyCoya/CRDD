@@ -52,20 +52,43 @@ def get_concept_by_representation(representation, limit):
         index = "representation_cjk" if isCJK(representation) else "representation_eng"
         return run_query("""
         call db.index.fulltext.queryNodes($index,$representation) yield node, score
-        match (node)-[represent:Represent]->(concept)
+        match (node)-[:Represent]->(concept)
         with concept limit $limit
-        match (representation)-[represent:Represent]->(concept)
+        match (representation)-[:Represent]->(concept)
         set representation.element_id = elementid(representation)
         set concept.element_id = elementid(concept)
         return concept{.element_id} as concept, collect(representation{.value, .element_id}) as representations
-    """, params={
-        "index": index,
-        "representation": representation,
-        "limit": limit,
-    })
+        """, params={
+            "index": index,
+            "representation": representation,
+            "limit": limit,
+        })
     except: raise
 
-
+@check_connection
+def get_concept(element_id):
+    try:
+        return run_query("""
+        match (representation)-[:Represent]->(c:Concept)
+        where elementid(c) = $element_id
+        set representation.element_id = elementid(representation)
+        with representation, c
+        match (definition_set:DefinitionSet)-[:Provide]->(coding_set:CodingSet)-[:Provide]->(code:Code)-[:Encode]->(c)
+        set definition_set.element_id = elementid(definition_set)
+        set coding_set.element_id = elementid(coding_set)
+        set code.element_id = elementid(code)
+        return $element_id as concept_eid,
+                collect(distinct code{
+                   .value, 
+                   .element_id, 
+                   definition_set: definition_set{.element_id, .value}, 
+                   coding_set: coding_set{.element_id, .value}
+                }) AS codes，
+                collect(distinct representation{.value, .element_id}) as representations,
+        """, params={
+            "element_id": element_id
+        })
+    except: raise
 # check_connection
 # def get
 
