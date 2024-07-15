@@ -1,26 +1,23 @@
 <template>
-    <v-row>
-        <v-col cols="12">
+    <v-sheet elevation="5" class="h-100">
+        <v-container>
             <h2 class="mb-3">源数据</h2>
-        </v-col>
-        <!-- <v-col class="d-flex justify-end">
-                <v-switch density="compact" :model-value="true" color="primary" label="显示标注"></v-switch>
-            </v-col> -->
-    </v-row>
-    <v-row>
-        <v-col>显示标注深度：{{ annotation_depth }}</v-col>
-        <v-col>
-            <v-slider v-model="annotation_depth" :step="1" :max="5" min="-1"
-                @update:modelValue="changeDepth(annotation_depth)"></v-slider>
-        </v-col>
-    </v-row>
-    <v-row>
-        <v-col @click="focusAnnotation">
-            <!-- Set annotations' cursor to pointer when hover -->
-            <div id="records" v-html="annotatedRecordHTML">
-            </div>
-        </v-col>
-    </v-row>
+            <v-row>
+                <v-col>显示标注深度：{{ annotation_depth }}</v-col>
+                <v-col>
+                    <v-slider hide-details="auto" v-model="annotation_depth" :step="1" :max="5" min="-1"
+                        @update:modelValue="changeDepth(annotation_depth)"></v-slider>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col @click="focusAnnotation">
+                    <!-- Set annotations' cursor to pointer when hover -->
+                    <div id="records" v-html="annotatedRecordHTML">
+                    </div>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-sheet>
 </template>
 
 <script setup>

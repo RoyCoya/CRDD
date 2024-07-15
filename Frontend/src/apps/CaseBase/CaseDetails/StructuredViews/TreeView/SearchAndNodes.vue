@@ -65,11 +65,11 @@ const getNodesByDepth = (depth) => {
     return nodes;
 };
 
-const openAll = () => {
-    nodes_for_search.value.forEach(node => {
-        getNodeByID(node.id).state.opened = true;
-    });
-};
+// const openAll = () => {
+//     nodes_for_search.value.forEach(node => {
+//         getNodeByID(node.id).state.opened = true;
+//     });
+// };
 
 const closeAll = () => {
     nodes_for_search.value.forEach(node => {

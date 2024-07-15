@@ -1,6 +1,6 @@
 <template>
-    <v-card elevation="5">
-        <v-sheet class="px-5 pt-3 text-body-2">
+    <v-card elevation="5" class="px-5 pt-3">
+        <v-sheet class="text-body-2">
             <v-row align="center">
                 <v-col cols="1">姓名：xxx</v-col>
                 <v-col cols="1">性别：男</v-col>
@@ -25,7 +25,14 @@
                         便血
                     </v-chip>
                 </v-col>
-                <v-col cols="3">既往史：</v-col>
+                <v-col cols="3">既往史：<v-chip size="small" variant="elevated" class="me-1">
+                        <v-tooltip location="bottom" activator="parent" text="K92.1"></v-tooltip>
+                        便血
+                    </v-chip>
+                    <v-chip size="small" variant="elevated" class="me-1">
+                        <v-tooltip location="bottom" activator="parent" text="K92.1"></v-tooltip>
+                        淤斑
+                    </v-chip></v-col>
                 <v-col cols="2">个人史：</v-col>
                 <v-col cols="2">家族史：无</v-col>
                 <v-col cols="2">过敏史：无</v-col>
