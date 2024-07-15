@@ -83,8 +83,8 @@ def get_concept(element_id):
                    .element_id, 
                    definition_set: definition_set{.element_id, .value}, 
                    coding_set: coding_set{.element_id, .value}
-                }) AS codes，
-                collect(distinct representation{.value, .element_id}) as representations,
+                }) AS codes,
+                collect(distinct representation{.value, .element_id}) as representations
         """, params={
             "element_id": element_id
         })
