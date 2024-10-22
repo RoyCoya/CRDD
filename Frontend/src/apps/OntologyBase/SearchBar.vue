@@ -13,21 +13,20 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
 
 // Define your component's data using ref
-// const myData = ref('Hello, Vue 3!');
 const route = useRoute();
 const router = useRouter();
-const queryString = ref(route.query.onto_name);
+const queryString = ref(route.query.representation);
 const items = ref([
   '本体 1', '本体 2'
 ])
 
-const searchOntology = () => {
-  router.push({
+const searchOntology = async() => {
+  window.location.href = router.resolve({
     name: 'Ontology_SearchResults',
     query: {
-      onto_name: queryString.value,
+      representation: queryString.value,
     },
-  });
+  }).href;
 };
 </script>
 

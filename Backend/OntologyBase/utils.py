@@ -16,3 +16,6 @@ def isCJK(string):
         bool: contains cjk or not
     """
     return bool(cjk_regex.search(string))
+
+def getTextIndex(string):
+    return "Chinese" if isCJK(string) else "English"

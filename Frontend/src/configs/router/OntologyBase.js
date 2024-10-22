@@ -1,7 +1,7 @@
 // ontology base routes
 import OntologyBase from '@/apps/OntologyBase/OntologyBase.vue';
 import OntologySearchResults from '@/apps/OntologyBase/SearchResults/SearchResults.vue';
-import OntologyDetails from '@/apps/OntologyBase/OntologyDetails/OntologyDetails.vue';
+import ConceptDetails from '@/apps/OntologyBase/ConceptDetails/ConceptDetails.vue';
 
 export const routes_OntologyBase = [{
     path: '/ontology/',
@@ -9,13 +9,13 @@ export const routes_OntologyBase = [{
     name: 'Ontology_OntologyBase',
   },
   {
-    path: '/ontology/search/',
+    path: '/ontology/concepts/',
     component: OntologySearchResults,
     name: 'Ontology_SearchResults',
   },
   {
-    path: '/ontology/details/:id/',
-    component: OntologyDetails,
+    path: '/ontology/concepts/:id',
+    component: ConceptDetails,
     name: 'Ontology_Details',
   },
   ];

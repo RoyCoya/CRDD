@@ -31,9 +31,7 @@ const props = defineProps({
     },
     backPage_params: Object,
     backPage_query: Object,
-    ontology_name: String,
 });
-console.log(props.backPage_query);
 
 /* Define your functions */
 const back_to_Base = () => {

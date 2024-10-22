@@ -1,44 +1,35 @@
 <template>
   <div>
-    <h1>Data from Backend</h1>
-    <p>calling: {{ url }}</p>
+    <p>URL: {{ url }}</p>
     <ul>
-      <li v-for="item in data" :key="item.id">{{ item.comments }}</li>
+      <li v-for="item in data" :key="item.id">{{ item.name }}</li>
     </ul>
   </div>
 </template>
-  
-<script>
+
+<script setup>
+import { ref, onMounted } from 'vue';
 import backend from "@/configs/backend";
 import axios from 'axios';
 
-const url = backend.backendBaseUrl + backend.mainFrameBaseUrl + 'test'
-console.log(url)
+// 定义变量
+const url = backend.backendBaseUrl + backend.mainFrameBaseUrl + 'test';
+console.log(url);
 
-export default {
-  data() {
-    return {
-      url : url,
-      data: [],
-    };
-  },
-  mounted() {
-    this.loadData();
-  },
-  methods: {
-    loadData() {
-      // 发起 API 请求
-      axios.get(url)
-        .then(response => {
-          // 处理响应数据
-          this.data = response.data;
-        })
-        .catch(error => {
-          // 处理错误
-          console.error(error);
-        });
-    }
+const data = ref(null);
+
+// 定义方法
+const loadData = async () => {
+  try {
+    const response = await axios.get(url);
+    data.value = response.data;
+  } catch (error) {
+    console.error(error);
   }
-}
+};
+
+// 生命周期钩子
+onMounted(() => {
+  loadData();
+});
 </script>
-  
