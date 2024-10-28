@@ -8,6 +8,7 @@
                         <v-col cols="12">
                             <h1 v-if="prefer_terms">{{ prefer_terms.join(" | ") }}</h1>
                             <v-progress-circular v-else indeterminate color="primary"></v-progress-circular>
+                            <h2>{{ concept.element_id }}</h2>
                         </v-col>
                         <v-col cols="12">
                             <v-tabs v-model="tab" bg-color="black">

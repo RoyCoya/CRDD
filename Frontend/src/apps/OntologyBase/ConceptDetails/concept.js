@@ -104,7 +104,7 @@ export const getPreferTermList = async (concept, params) => {
                 }
                 return [cn_response.data[0].value]
             }
-        default: return []
+        default: return ["暂无表述"]
     }
 }
 

@@ -1,5 +1,6 @@
 from django.http import JsonResponse, HttpRequest
-import OntologyBase.response as response
+from OntologyBase.response import *
+from MainFrame.response import *
 from django.core.paginator import Paginator
 from rest_framework.views import APIView
 import OntologyBase.ontology.Concept as concept
@@ -10,14 +11,14 @@ import OntologyBase.ontology.DefinitionSet as definition_set
 
 class DefinitionSets(APIView):
     def get(self, request):
-        return response.TODO
+        return TODO
 
 
 class DefinitionSet(APIView):
     def get(self, request, element_id):
         try:
             data = definition_set.retrive(element_id)
-            if not data: return response.NOT_FOUND
-            return response.success(data=data)
+            if not data: return NOT_FOUND
+            return success(data=data)
         except Exception as e:
-            return response.server_error(str(e))
+            return server_error(str(e))
