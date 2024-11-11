@@ -29,7 +29,6 @@
                                     <GraphRelation :concept="concept"></GraphRelation>
                                 </v-tabs-window-item>
                             </v-tabs-window>
-                            
                         </v-col>
                     </template>
                     <template v-else>

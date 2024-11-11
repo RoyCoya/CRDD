@@ -14,6 +14,7 @@
                 <v-text-field density="compact" label="全局搜索" rounded="lg" variant="solo-filled" flat hide-details
                     single-line></v-text-field>
             </v-responsive>
+            <v-btn :to="routes.find(route => route.name === 'HomePage_login')" variant="text" class="ms-5">登录</v-btn>
         </v-container>
     </v-app-bar>
 </template>

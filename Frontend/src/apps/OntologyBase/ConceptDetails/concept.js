@@ -1,6 +1,5 @@
 import axios from 'axios';
-import backend from "@/configs/backend";
-import { param } from 'jquery';
+import backend from "@/configs/api/backend";
 
 // TODO: 用户偏好
 const languages = [
@@ -13,7 +12,7 @@ const urls = backend.api_ontology.concept
     Internal functions
 */
 
-export const fetchData = async (conceptFunction, concept, params) => {
+const fetchData = async (conceptFunction, concept, params) => {
     try {
         let response = await axios.get(conceptFunction(concept.element_id), { params: params });
         return { "status": response.status, "data": response.data.data };

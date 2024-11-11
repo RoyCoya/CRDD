@@ -1,5 +1,5 @@
 import axios from 'axios';
-import backend from "@/configs/backend";
+import backend from "@/configs/api/backend";
 
 const urls = backend.api_ontology.definition_set;
 

@@ -8,6 +8,7 @@ import OntologyBase.ontology.Concept as concept
 
 # TODO: api description, see obsidian CRDD/API
 
+
 class Concepts(APIView):
     def get(self, request):
         try:
@@ -18,15 +19,18 @@ class Concepts(APIView):
             ]
             if definition_set and coding_set and code:
                 return success(
-                    concept.search_by_code(definition_set, coding_set, code)
+                    data=concept.search_by_code(definition_set, coding_set, code)
                 )
             if representation:
                 return success(
-                    concept.search_by_representation(representation, request.GET.get("limit"))
+                    data=concept.search_by_representation(
+                        representation, request.GET.get("limit")
+                    )
                 )
             return CONCEPT_SEARCHING_REQUIREMENTS
         except Exception as e:
             return server_error(str(e))
+
 
 class Concept(APIView):
     def get(self, request, concept_element_id):
@@ -60,7 +64,7 @@ class Concept(APIView):
         try:
             data = concept.retrive(concept_element_id)
             if data and len(data) == 1:
-                return success(data)
+                return success(data=data)
             else:
                 return NOT_FOUND
         except Exception as e:
@@ -78,7 +82,7 @@ class Representations(APIView):
             )
             if not data:
                 return NOT_FOUND
-            return success(data)
+            return success(data=data)
         except Exception as e:
             return server_error(str(e))
 
@@ -92,8 +96,10 @@ class Representation(APIView):
 # TODO: 根据类型搜索
 class Relations(APIView):
     def get(self, request, concept_element_id):
-        data = concept.get_relations(concept_element_id, request.GET.get("limit"), request.GET.get("query_type"))
-        return success(data)
+        data = concept.get_relations(
+            concept_element_id, request.GET.get("limit"), request.GET.get("query_type")
+        )
+        return success(data=data)
 
 
 # TODO: 留用
@@ -114,7 +120,7 @@ class PreferTerms(APIView):
             )
             if not data:
                 return NOT_FOUND
-            return success(data)
+            return success(data=data)
         except Exception as e:
             return server_error(str(e))
 
@@ -131,6 +137,6 @@ class Synonyms(APIView):
             )
             if not data:
                 return NOT_FOUND
-            return success(data)
+            return success(data=data)
         except Exception as e:
             return server_error(str(e))

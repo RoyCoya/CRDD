@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import NavBar from './NavBar/NavBar.vue';
+import NavBar from '@/apps/HomePage/NavBar/NavBar.vue';
 </script>
 
 <style scoped>

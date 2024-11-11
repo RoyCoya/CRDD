@@ -12,6 +12,7 @@ export const routes_OntologyBase = [{
     path: '/ontology/concepts/',
     component: OntologySearchResults,
     name: 'Ontology_SearchResults',
+    meta: { requiresAuth: true },
   },
   {
     path: '/ontology/concepts/:id',

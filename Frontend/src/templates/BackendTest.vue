@@ -9,7 +9,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import backend from "@/configs/backend";
+import backend from "@/configs/api/backend";
 import axios from 'axios';
 
 // 定义变量

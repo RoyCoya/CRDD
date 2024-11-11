@@ -41,6 +41,16 @@ def retrive(element_id):
         raise
 
 
+def create():
+    try:
+        return run_query(
+            """
+
+        """
+        )
+    except:
+        raise
+
 @check_connection
 def search_by_code(definition_set, coding_set, code):
     # try: return run_query("""
@@ -70,7 +80,7 @@ def search_by_representation(representation, limit):
         """,
             params={"representation": representation},
         )
-        exact_ids = [row['element_id'] for row in exact_result]
+        exact_ids = [row["element_id"] for row in exact_result]
         fuzzy_results = run_query(
             query="""
         CALL db.index.fulltext.queryNodes($index, $representation) YIELD node, score

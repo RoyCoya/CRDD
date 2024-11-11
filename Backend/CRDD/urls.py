@@ -2,12 +2,22 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.static import serve
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 
 djangoURLs = [
     # admin后台
     path('admin/', admin.site.urls),
     # 用户模板
     path('accounts/', include('django.contrib.auth.urls')),
+]
+
+jwtURLs = [
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
     
 publicAPPs = [
@@ -19,7 +29,7 @@ privateAPPs = [
     
 ]
 
-urlpatterns = djangoURLs + publicAPPs + privateAPPs
+urlpatterns = djangoURLs + publicAPPs + privateAPPs + jwtURLs
 
 # 开发时可显示用户文件
 if settings.DEBUG:

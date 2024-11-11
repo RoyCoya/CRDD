@@ -35,12 +35,12 @@ const backPage = ref('Ontology_OntologyBase')
 const concepts = ref(null)
 const fetchData = async () => {
     let result = await search(route.query.representation);
+    
     if (result.status !== 200) {
         alert(result.data.message);
         router.push({ name: 'Ontology_OntologyBase', });
         return;
     }
-    
     concepts.value = result.data;
 }
 

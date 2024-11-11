@@ -4,6 +4,11 @@ const backendBaseUrl = "http://localhost:8000/"; // change to your backend addre
 const Ontology = backendBaseUrl + "ontology";
 const Case = backendBaseUrl + "case";
 
+const api_authorization = {
+  "login": `${backendBaseUrl}/login/`,
+  "register": `${backendBaseUrl}/register/`,
+}
+
 const api_ontology = {
   "concept": {
     "search": `${Ontology}/concepts/`,
@@ -32,6 +37,7 @@ const errorReturn = (error) =>{
 
 export default {
   backendBaseUrl,
+  api_authorization,
   api_ontology,
   api_case,
   errorReturn,
