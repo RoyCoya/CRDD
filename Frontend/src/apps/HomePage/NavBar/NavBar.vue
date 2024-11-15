@@ -29,6 +29,7 @@ const links = [
     { title: 'AI库', name: 'AI_AIBase' },
     { title: '语料库', name: 'Courpus_CorpusBase' },
 ];
+
 </script>
 
 <style></style>@/configs/router/router
