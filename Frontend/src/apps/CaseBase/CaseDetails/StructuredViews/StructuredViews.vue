@@ -15,10 +15,10 @@
                     <TreeView></TreeView>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="TimelineView">
-                    时间线
+                    <TimelineView></TimelineView>
                 </v-tabs-window-item>
                 <v-tabs-window-item value="RelationshipView">
-                    关系图谱
+                    <RelationView></RelationView>
                 </v-tabs-window-item>
             </v-tabs-window>
         </v-container>
@@ -29,7 +29,9 @@
 /* Import */
 import { ref } from 'vue';
 import InfoView from '@/apps/CaseBase/CaseDetails/StructuredViews/InfoView/InfoView.vue';
-import TreeView from '@/apps/CaseBase/CaseDetails/StructuredViews/TreeView/TreeView.vue'
+import TreeView from '@/apps/CaseBase/CaseDetails/StructuredViews/TreeView/TreeView.vue';
+import TimelineView from '@/apps/CaseBase/CaseDetails/StructuredViews/TimelineView/TimelineView.vue';
+import RelationView from '@/apps/CaseBase/CaseDetails/StructuredViews/RelationView/RelationView.vue';
 
 /* Data */
 const tab = ref(null);

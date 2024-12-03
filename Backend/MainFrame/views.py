@@ -4,7 +4,6 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated
-from .permissions import OwnerOnly
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import Test
 from .serializers import TestSerializer
